@@ -1,0 +1,74 @@
+{% extends 'base.html' %}
+
+
+{% block title %} Medicamentos - Lista {% endblock %}
+
+{% block main %}
+
+</div>
+    <div class="row">
+
+        <div>
+            {% if user.is_authenticated %}
+                <p>Olá, {{user.username }}!
+                    <a href="{% url 'logout' %}" style="padding-left: 10px;">
+                        <button type="button" class="btn btn-danger btn-sm">Deslogar</button>
+                    </a>
+                </p>
+
+            {% endif %}
+        </div>
+
+        <div>
+            <h3 style="text-align: center;padding-bottom:100px;">Lista de Medicamentos</h3>
+            <ul class="list-group">
+                <table class="table table-bordered">
+                <thead>
+                <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Nome</th>
+                    <th scope="col">MG</th>
+                    <th scope="col">Indicação</th>
+                    <th scope="col">Código de Barras</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for medicamento in medicamentos %}
+
+                    {% if user.username == 'admin' %}
+                        <tr>
+                            <th scope="row">{{ medicamento.id }}</th>
+                            <td><a href="{% url 'medicamentos_update' medicamento.id %}">{{ medicamento.name }}<a/></td>
+                            <td>{{ medicamento.mg }}</td>
+                            <td>{{ medicamento.indication }}</td>
+                            <td>{{ medicamento.code }}</td>
+                            <td><a href="{% url 'medicamentos_delete' medicamento.id %}" class="trash-item"><i class="fa fa-trash" aria-hidden="true"></i><a/></td>
+                        </tr>
+                    {% else %}
+                        <tr>
+                            <th scope="row">{{ medicamento.id }}</th>
+                            <td>{{ medicamento.name }}</td>
+                            <td>{{ medicamento.mg }}</td>
+                            <td>{{ medicamento.indication }}</td>
+                            <td>{{ medicamento.code }}</td>
+                        </tr>
+                    {% endif %}
+
+                {% endfor %}
+                </tbody>
+                </table>
+            </ul>
+
+            <br>
+
+            {% if user.username == 'admin' %}
+                <div class="d-flex justify-content-center">
+                    <a href="{% url 'medicamentos_new' %}" class="btn btn-primary" style="text-align:center;;">Novo Medicamento</a>
+                </div>
+            {% endif %}
+
+        </div>
+    </div>
+
+
+{% endblock %}

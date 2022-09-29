@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% load bootstrap %}
+
+{% block title %} ADM-MEDICAMENTOS {% endblock %}
+
+{% block main %}
+
+{% if user.username == 'admin' %}
+    <h3 style="text-align: center;padding-bottom:70px;">Medicamento</h3>
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form|bootstrap }}
+        <div style="padding-top: 10px;" class="d-flex justify-content-center">
+            <button type="submit" class="btn btn-primary">Salvar</button>
+        </div>
+    </form>
+{% else %}
+    <meta http-equiv="REFRESH" content="0;url=http://127.0.0.1:8000/medicamentos/list/">
+{% endif %}
+
+{% endblock %}

@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+
+{% block title %} Home {% endblock %}
+
+{% block main %}
+
+
+    <div class="row">
+
+        {% if user.is_authenticated %}
+        {% else %}
+            <div class="d-flex justify-content-center">
+                <h2>Faça login para visualizar os medicamentos!</h2>
+            </div>
+        {% endif %}
+
+        <div class="col-sm">
+            {% if user.is_authenticated %}
+                <h2>Olá, {{ user.username }}!</h2>
+                <div class="d-flex justify-content-center" style="padding-top: 30px;">
+                    <div style="margin-left: 1px;">
+                        <a href="http://127.0.0.1:8000/medicamentos/list/" class="btn btn-info">Ver medicamentos</a>
+                        <a href="{% url 'logout' %}" class="btn btn-danger">Deslogar</a>
+                    </div>
+                </div>
+            {% else %}
+                <div class="d-flex justify-content-center" style="padding-top: 30px;">
+                    <a href="{% url 'login' %}" class="btn btn-success">Entrar</a>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+
+{% endblock %}
