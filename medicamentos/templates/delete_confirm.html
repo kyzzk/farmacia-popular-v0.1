@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+
+{% block title %} Confirmacao {% endblock %}
+
+{% block main %}
+
+{% if user.username == 'admin' %}
+    <h3>Tem certeza que deseja deletar:</h3>
+    <h3>"{{ medicamentos.name }}"?</h3>
+
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="d-flex justify-content-center" style="padding-top: 30px;">
+            <button type="submit" class="btn btn-danger">Deletar</button>
+        </div>
+    </form>
+{% else %}
+    <meta http-equiv="REFRESH" content="0;url=http://127.0.0.1:8000/medicamentos/list/">
+{% endif %}
+
+
+{% endblock %}
+

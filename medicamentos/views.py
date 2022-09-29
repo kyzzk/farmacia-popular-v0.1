@@ -40,4 +40,4 @@ def medicamentos_delete(request, id):
         medicamento.delete()
         return redirect('medicamentos_list')
 
-    return render(request, 'person_delete_confirm.html', {'medicamentos': medicamento})
+    return render(request, 'delete_confirm.html', {'medicamentos': medicamento})
