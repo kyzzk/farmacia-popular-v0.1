@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+{% load bootstrap %}
+
+
+{% block title %} Pagina de Registro {% endblock %}
+
+{% block main %}
+
+    <div class="d-flex justify-content-center" style="padding-bottom: 20px;">
+        <h2>Registro</h2>
+    </div>
+    <form method="post">
+        {% csrf_token %}
+
+        <div>
+
+            <div>
+                Usuário
+                <div class="input-group mb-3">
+                     {{ form.username }}
+                </div> 
+             </div>
+     
+             <div>
+                 Senha
+                 <div class="input-group mb-3">
+                      {{ form.password1 }}
+                 </div> 
+              </div>
+     
+              
+              <div>
+                 Confirmar Senha
+                 <div class="input-group mb-3">
+                      {{ form.password2 }}
+                 </div> 
+              </div>
+        </div>
+
+        <div class="d-flex justify-content-center" style="padding-top: 20px;">
+            <div style="margin-left: 1px;">
+                <button type="submit" class="btn btn-success">Registrar</button>
+                <a href="http://127.0.0.1:8000/login/" class="btn btn-info">Logar</a>
+            </div>
+        </div>
+    </form>
+
+{% endblock %}

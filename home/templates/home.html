@@ -21,12 +21,15 @@
                 <div class="d-flex justify-content-center" style="padding-top: 30px;">
                     <div style="margin-left: 1px;">
                         <a href="http://127.0.0.1:8000/medicamentos/list/" class="btn btn-info">Ver medicamentos</a>
-                        <a href="{% url 'logout' %}" class="btn btn-danger">Deslogar</a>
+                        <a href="{% url 'logout' %}" class="btn btn-danger">Sair</a>
                     </div>
                 </div>
             {% else %}
                 <div class="d-flex justify-content-center" style="padding-top: 30px;">
-                    <a href="{% url 'login' %}" class="btn btn-success">Entrar</a>
+                    <div style="margin-left: 1px;">
+                        <a href="{% url 'login' %}" class="btn btn-success">Entrar</a>
+                        <a href="http://127.0.0.1:8000/register/" class="btn btn-info">Registrar</a>
+                    </div>
                 </div>
             {% endif %}
         </div>

@@ -6,14 +6,30 @@
 
 {% block main %}
 
-    <div class="d-flex justify-content-center">
-        <h2>Login</h2>
+    <div class="d-flex justify-content-center" style="padding-bottom: 20px;">
+        <h2>Entrar</h2>
     </div>
     <form method="post">
         {% csrf_token %}
-        {{ form|bootstrap }}
-        <div class="d-flex justify-content-center">
-            <button type="submit" class="btn btn-info">Login</button>
+        <div>
+            Usuário
+            <div class="input-group mb-3">
+                 {{ form.username }}
+            </div> 
+         </div>
+
+         <div>
+            Senha
+            <div class="input-group mb-3">
+                 {{ form.password }}
+            </div> 
+         </div>
+
+        <div class="d-flex justify-content-center" style="padding-top: 20px;">
+            <div style="margin-left: 1px;">
+                <button type="submit" class="btn btn-success">Entrar</button>
+                <a href="http://127.0.0.1:8000/register/" class="btn btn-info">Registrar</a>
+            </div>
         </div>
     </form>
 
